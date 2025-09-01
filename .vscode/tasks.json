@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar Taller",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++11",
+                "src/*.cpp",       // compila todos los .cpp de src/
+                "-Iinclude",       // incluye cabeceras desde include/
+                "-o",
+                "build/taller.exe" // ejecutable final en build/
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        }
+    ]
+}
