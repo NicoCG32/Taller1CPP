@@ -1,4 +1,5 @@
 #include "sistema.h"
-#include <iostream>
 
+Sistema::Sistema() {}
+Sistema::~Sistema() {}
 
