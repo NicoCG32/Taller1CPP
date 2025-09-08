@@ -6,9 +6,12 @@ a la universidad.
 
 #include <iostream>
 #include <string>
-#include "fecha.h"
+#include "Fecha.h"
+#include "LinkedList.h"
+#include "Inscripcion.h"
 
 class Alumno {
+    
 private:
     int id;
     std::string nombre;
@@ -16,7 +19,10 @@ private:
     std::string carrera;
     Fecha fechaIngreso;
 
+    LinkedList<Inscripcion> cursosInscritos;
+
 public:
+    Alumno();
     Alumno(int id, std::string nombre, std::string apellido, std::string carrera, Fecha fechaIngreso);
     ~Alumno();
 
@@ -25,6 +31,7 @@ public:
     std::string getApellido();
     std::string getCarrera();
     Fecha getFechaIngreso();
+    LinkedList<Inscripcion> getCursosInscritos();
 
     void setId(int id);
     void setNombre(std::string nombre);
@@ -33,4 +40,5 @@ public:
     void setFechaIngreso(Fecha fechaIngreso);
 
     std::string toString();
+    
 };

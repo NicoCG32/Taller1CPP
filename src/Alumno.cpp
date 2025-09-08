@@ -1,11 +1,14 @@
 #include "Alumno.h"
 
+Alumno::Alumno(){}
 Alumno::Alumno(int id, std::string nombre, std::string apellido, std::string carrera, Fecha fechaIngreso) {
     this->id = id;
     this->nombre = nombre;
     this->apellido = apellido;
     this->carrera = carrera;
     this->fechaIngreso = fechaIngreso;
+
+    cursosInscritos = LinkedList<Inscripcion>();
 }
 Alumno::~Alumno() {}
 int Alumno::getId() {

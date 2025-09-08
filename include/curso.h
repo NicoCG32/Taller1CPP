@@ -5,6 +5,8 @@ nombre del profesor que dicta el curso. */
 
 #include <iostream>
 #include <string>
+#include "LinkedList.h"
+#include "Inscripcion.h"
 
 class Curso {
 private:
@@ -14,7 +16,10 @@ private:
     std::string carrera;
     std::string nombre_profesor;
 
+    LinkedList<Inscripcion> alumnosInscritos;
+    
 public:
+    Curso();
     Curso(int codigo, std::string nombre, int max_estudiantes, std::string carrera, std::string nombre_profesor);
     ~Curso();
 
@@ -23,6 +28,7 @@ public:
     int getMaxEstudiantes();
     std::string getCarrera();
     std::string getNombreProfesor();
+    LinkedList<Inscripcion> getAlumnosInscritos();
 
     void setCodigo(int codigo);
     void setNombre(std::string nombre);

@@ -1,11 +1,14 @@
 #include "Curso.h"
 
+Curso::Curso() {}
 Curso::Curso(int id, std::string nombre, int max, std::string carrera, std::string nombre_profesor) {
     this->codigo = id;
     this->nombre = nombre;
     this->max_estudiantes = max;
     this->carrera = carrera;
     this->nombre_profesor = nombre_profesor;
+
+    alumnosInscritos = LinkedList<Inscripcion>();
 }
 Curso::~Curso() {}
 int Curso::getCodigo() {
