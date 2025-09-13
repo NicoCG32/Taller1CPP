@@ -1,26 +1,49 @@
 #include "Inscripcion.h"
 
-Inscripcion::Inscripcion() {}
-Inscripcion::Inscripcion(Alumno alumno, Curso curso) : alumno(alumno), curso(curso) {}
-Inscripcion::~Inscripcion() {}
-Alumno Inscripcion::getAlumno() {
+Inscripcion::Inscripcion() {
+    this->alumno = nullptr;
+    this->curso = nullptr;
+    this->notas = new LinkedListNotas();
+    this->promedio = 0;
+}
+Inscripcion::Inscripcion(Alumno* alumno, Curso* curso) {
+    this->alumno = alumno;
+    this->curso = curso;
+    this->notas = new LinkedListNotas();
+    this->promedio = 0;
+}   
+Inscripcion::~Inscripcion() {
+    delete notas;
+}
+
+Alumno* Inscripcion::getAlumno() {
     return alumno;
 }
-Curso Inscripcion::getCurso() {
+Curso* Inscripcion::getCurso() {
     return curso;
 }
-LinkedList<float> Inscripcion::getNotas() {
-    return notas;
-}
-void Inscripcion::setAlumno(Alumno alumno) {
-    this->alumno = alumno;
-}
-void Inscripcion::setCurso(Curso curso) {
-    this->curso = curso;
+float Inscripcion::getPromedio() {
+    return promedio;
 }
 void Inscripcion::agregarNota(float nota) {
-    notas.add(nota);
+    notas->add(nota);
+    calcularPromedio();
 }
-std::string Inscripcion::toString() {
-    return "Inscripcion[Alumno: " + alumno.toString() + ", Curso: " + curso.toString() + "]";
+void Inscripcion::calcularPromedio() {
+    if (notas->isEmpty()) {
+        promedio = 0;
+        return;
+    }
+    float suma = 0;
+    for (int i = 0; i < notas->getSize(); i++) {
+        suma += notas->get(i);
+    }
+    promedio = suma / notas->getSize();
+}
+
+string Inscripcion::toString() {
+    return "Alumno: " + alumno->toString() + "\nCurso: " + curso->toString() + "\nPromedio: " + to_string(promedio);
+}
+LinkedListNotas* Inscripcion::getNotas() {
+    return notas;
 }

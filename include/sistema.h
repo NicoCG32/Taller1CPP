@@ -1,32 +1,43 @@
 #pragma once
 
-#include "LinkedList.h"
+#include <string>
+
 #include "Alumno.h"
 #include "Curso.h"
 #include "Inscripcion.h"
 
-class Sistema {
+#include "LinkedLists/LinkedListAlumno.h"
+#include "LinkedLists/LinkedListCurso.h"
+#include "LinkedLists/LinkedListInscripcion.h"
 
+using namespace std;
+
+class Sistema {
+    
 private:
-    LinkedList<Alumno> alumnos;
-    LinkedList<Curso> cursos;
+    LinkedListAlumno* listaAlumnos;
+    LinkedListCurso* listaCursos;
+
+    Alumno* BuscarAlumno(int id);
+    Curso* BuscarCurso(int codigo);
 
 public:
-    Sistema();
-    ~Sistema();
+    bool iniciar();
+    void crearAlumno(int id, string nombre, string apellido, string carrera, string fechaIngreso);
+    void buscarAlumno(int id);
+    void eliminarAlumno(int id);
 
-    Alumno registrarAlumno(int id, std::string nombre, std::string apellido, std::string carrera, Fecha fechaIngreso);
-    Curso crearCurso(int codigo, std::string nombre, int max_estudiantes, std::string carrera, std::string nombre_profesor);
-    Inscripcion inscribirAlumno(int id_alumno, int codigo_curso);
-    void registrarNota(int id_alumno, int codigo_curso, float nota);
-    void reportes();
-    Alumno buscarAlumno(int id);
-    Curso buscarCurso(int codigo);
-    void eliminarInscripcion(int id_alumno, int codigo_curso);
-    void eliminarAlumno(int id_alumno);
-    void eliminarCurso(int codigo_curso);
+    void crearCurso(int codigo, string nombre, int max_estudiantes, string carrera, string nombre_profesor);
+    void buscarCurso(int codigo);
+    void eliminarCurso(int codigo);
 
-    
-    
+    bool inscribirAlumno(int idAlumno, int idCurso);
+    bool desinscribirAlumno(int idAlumno, int idCurso);
 
+    bool registrarNota(int idAlumno, int idCurso, float nota);
+
+    void obtenerAlumnosPorCarrera(string carrera);
+    void obtenerCursosPorAlumno(int idAlumno);
+    float obtenerPromedioDeCursoDeUnAlumno(int idAlumno, int idCurso);
+    float obtenerPromedioGeneralDeUnAlumno(int idAlumno);
 };

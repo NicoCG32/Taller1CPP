@@ -1,46 +1,61 @@
 #include "Alumno.h"
+#include "LinkedLists/LinkedListInscripcion.h"
 
-Alumno::Alumno(){}
-Alumno::Alumno(int id, std::string nombre, std::string apellido, std::string carrera, Fecha fechaIngreso) {
+using namespace std;
+
+Alumno::Alumno() {
+    this->id = 0;
+    this->nombre = "";
+    this->apellido = "";
+    this->carrera = "";
+    this->fechaIngreso = "";
+    this->cursosInscritos = nullptr;
+}
+Alumno::Alumno(int id, string nombre, string apellido, string carrera, string fechaIngreso) {
     this->id = id;
     this->nombre = nombre;
     this->apellido = apellido;
     this->carrera = carrera;
     this->fechaIngreso = fechaIngreso;
-
-    cursosInscritos = LinkedList<Inscripcion>();
+    this->cursosInscritos = new LinkedListInscripcion();
 }
-Alumno::~Alumno() {}
+Alumno::~Alumno() {
+    delete cursosInscritos;
+}
+
 int Alumno::getId() {
     return id;
 }
-std::string Alumno::getNombre() {
+string Alumno::getNombre() {
     return nombre;
 }
-std::string Alumno::getApellido() {
+string Alumno::getApellido() {
     return apellido;
 }
-std::string Alumno::getCarrera() {
+string Alumno::getCarrera() {
     return carrera;
 }
-Fecha Alumno::getFechaIngreso() {
+string Alumno::getFechaIngreso() {
     return fechaIngreso;
 }
 void Alumno::setId(int id) {
     this->id = id;
 }
-void Alumno::setNombre(std::string nombre) {
+void Alumno::setNombre(string nombre) {
     this->nombre = nombre;
 }
-void Alumno::setApellido(std::string apellido) {
+void Alumno::setApellido(string apellido) {
     this->apellido = apellido;
 }
-void Alumno::setCarrera(std::string carrera) {
+void Alumno::setCarrera(string carrera) {
     this->carrera = carrera;
 }
-void Alumno::setFechaIngreso(Fecha fechaIngreso) {
+void Alumno::setFechaIngreso(string fechaIngreso) {
     this->fechaIngreso = fechaIngreso;
 }
-std::string Alumno::toString() {
-    return "ID: " + std::to_string(id) + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Carrera: " + carrera + ", Fecha de Ingreso: " + fechaIngreso.toString();
+string Alumno::toString() {
+    return "ID: " + to_string(id) + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Carrera: " + carrera + ", Fecha de Ingreso: " + fechaIngreso;
+}
+LinkedListInscripcion* Alumno::getCursosInscritos() {
+    return cursosInscritos;
 }

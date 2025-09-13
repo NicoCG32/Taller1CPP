@@ -1,41 +1,38 @@
 #pragma once
 
-/*Los cursos tienen un código único, nombre, cantidad máxima de estudiantes, carrera y
-nombre del profesor que dicta el curso. */
-
-#include <iostream>
 #include <string>
-#include "LinkedList.h"
-#include "Inscripcion.h"
+using namespace std;
 
-class Curso {
+class LinkedListInscripcion;
+
+class Curso{
 private:
     int codigo;
-    std::string nombre;
+    string nombre;
     int max_estudiantes;
-    std::string carrera;
-    std::string nombre_profesor;
+    string carrera;
+    string nombre_profesor;
 
-    LinkedList<Inscripcion> alumnosInscritos;
-    
+    LinkedListInscripcion* alumnosInscritos;
+
 public:
     Curso();
-    Curso(int codigo, std::string nombre, int max_estudiantes, std::string carrera, std::string nombre_profesor);
+    Curso(int codigo, string nombre, int max_estudiantes, string carrera, string nombre_profesor);
     ~Curso();
 
     int getCodigo();
-    std::string getNombre();
+    string getNombre();
     int getMaxEstudiantes();
-    std::string getCarrera();
-    std::string getNombreProfesor();
-    LinkedList<Inscripcion> getAlumnosInscritos();
+    string getCarrera();
+    string getNombreProfesor();
 
     void setCodigo(int codigo);
-    void setNombre(std::string nombre);
+    void setNombre(string nombre);
     void setMaxEstudiantes(int max_estudiantes);
-    void setCarrera(std::string carrera);
-    void setNombreProfesor(std::string nombre_profesor);
+    void setCarrera(string carrera);
+    void setNombreProfesor(string nombre_profesor);
     
-    std::string toString();
+    string toString();
 
+    LinkedListInscripcion* getAlumnosInscritos();
 };

@@ -1,5 +1,9 @@
 {
     "files.associations": {
+        "string": "cpp",
+        "ostream": "cpp",
+        "new": "cpp",
+        "iostream": "cpp",
         "array": "cpp",
         "atomic": "cpp",
         "cctype": "cpp",
@@ -10,6 +14,7 @@
         "cstdint": "cpp",
         "cstdio": "cpp",
         "cstdlib": "cpp",
+        "ctime": "cpp",
         "cwchar": "cpp",
         "cwctype": "cpp",
         "deque": "cpp",
@@ -23,23 +28,21 @@
         "memory_resource": "cpp",
         "numeric": "cpp",
         "random": "cpp",
-        "string": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
         "type_traits": "cpp",
         "utility": "cpp",
         "fstream": "cpp",
         "initializer_list": "cpp",
+        "iomanip": "cpp",
         "iosfwd": "cpp",
-        "iostream": "cpp",
         "istream": "cpp",
         "limits": "cpp",
-        "new": "cpp",
-        "ostream": "cpp",
         "sstream": "cpp",
         "stdexcept": "cpp",
         "streambuf": "cpp",
-        "typeinfo": "cpp",
-        "*.tpp": "cpp"
-    }
+        "typeinfo": "cpp"
+    },
+    "python-envs.defaultEnvManager": "ms-python.python:system",
+    "python-envs.pythonProjects": []
 }

@@ -1,19 +1,13 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Ejecutar Taller",
-            "type": "cppdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/taller.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${workspaceFolder}",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "gdb",
-            
-        }
-    ]
+  "configurations": [
+    {
+      "type": "cppvsdbg",
+      "request": "launch",
+      "name": "Debug taller.exe",
+      "program": "${workspaceFolder}/build/taller.exe",
+      "stopAtEntry": true,
+      "cwd": "${workspaceFolder}",
+      "preLaunchTask": "build"
+    }
+  ]
 }
