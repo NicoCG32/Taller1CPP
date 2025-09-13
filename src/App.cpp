@@ -158,8 +158,8 @@ void App::registrarNota(){
     cout << "Ingrese la Nota: ";
     cin >> nota;
 
-    while (nota < 0.0 || nota > 7.0) {
-        cout << "Nota invalida. Ingrese una nota entre 0 y 7: ";
+    while (nota < 1.0 || nota > 7.0) {
+        cout << "Nota invalida. Ingrese una nota entre 1 y 7: ";
         cin >> nota;
     }
 
