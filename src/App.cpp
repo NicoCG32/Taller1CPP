@@ -157,6 +157,12 @@ void App::registrarNota(){
     cin >> idCurso;
     cout << "Ingrese la Nota: ";
     cin >> nota;
+
+    while (nota < 0.0 || nota > 7.0) {
+        cout << "Nota invalida. Ingrese una nota entre 0 y 7: ";
+        cin >> nota;
+    }
+
     if (sistema.registrarNota(idAlumno, idCurso, nota)) {
         cout << "Nota registrada exitosamente.\n";
     } else {

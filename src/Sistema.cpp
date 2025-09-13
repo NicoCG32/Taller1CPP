@@ -47,10 +47,16 @@ bool Sistema::iniciar() {
     bool inscripcion2 = inscribirAlumno(2, 102);
     bool inscripcion3 = inscribirAlumno(3, 103);
     
+
     return inscripcion1 && inscripcion2 && inscripcion3;
 }
 
 void Sistema::crearAlumno(int id, string nombre, string apellido, string carrera, string fechaIngreso) {
+    if (BuscarAlumno(id) != nullptr) {
+        cout << "Error: Ya existe un alumno con ID " << id << endl;
+        return;
+    }
+    
     Alumno* nuevo_alumno = new Alumno(id, nombre, apellido, carrera, fechaIngreso);
     cout << "Alumno creado: " << nuevo_alumno->toString() << endl;
     listaAlumnos->add(*nuevo_alumno);
@@ -83,6 +89,10 @@ void Sistema::eliminarAlumno(int id) {
 }
 
 void Sistema::crearCurso(int codigo, string nombre, int max_estudiantes, string carrera, string nombre_profesor) {
+    if (BuscarCurso(codigo) != nullptr) {
+        cout << "Error: Ya existe un curso con Codigo " << codigo << endl;
+        return;
+    }
     Curso* nuevo_curso = new Curso(codigo, nombre, max_estudiantes, carrera, nombre_profesor);
     cout << "Curso creado: " << nuevo_curso->toString() << endl;
     listaCursos->add(nuevo_curso);
@@ -126,7 +136,20 @@ bool Sistema::inscribirAlumno(int idAlumno, int idCurso) {
         cout << "Curso con Codigo " << idCurso << " no encontrado." << endl;
         return false;
     }
-    
+    if (alumno->getCarrera() != curso->getCarrera()) {
+        cout << "Error: El alumno (" << alumno->getNombre() << ") no pertenece a la carrera del curso (" << curso->getCarrera() << ")." << endl;
+        return false;
+    }
+
+    LinkedListInscripcion* inscripcionesAlumno = alumno->getCursosInscritos();
+    for (int i = 0; i < inscripcionesAlumno->getSize(); i++) {
+        Inscripcion* inscripcion = inscripcionesAlumno->get(i);
+        if (inscripcion->getCurso()->getCodigo() == idCurso) {
+            cout << "Error: El alumno ya está inscrito en este curso." << endl;
+            return false;
+        }
+    }
+
     if (curso->getAlumnosInscritos()->getSize() >= curso->getMaxEstudiantes()) {
         cout << "Curso " << curso->getNombre() << " ya ha alcanzado el maximo de estudiantes." << endl;
         return false;
